@@ -27,7 +27,7 @@ description: > # this means to ignore newlines until "Language & timezone"
 
 ## => Language and Timezone
 ##############################
-lang:"zh" # the language of your site, "en" (default, English), "zh"(简体中文), "zh-Hans"(简体中文), "zh-Hant"(繁體中文)
+lang:zh # the language of your site, "en" (default, English), "zh"(简体中文), "zh-Hans"(简体中文), "zh-Hant"(繁體中文)
 timezone:CN  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 
@@ -35,11 +35,11 @@ timezone:CN  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones 
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Your Name
+  name      : 羽毛
   url       :
   avatar    : # path or url of avatar image
-  bio       : I am an amazing person.
-  email     :
+  bio       : 一个苦逼的开发人员
+  email     : 121093188@qq.com
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   googleplus: # "user_id"   the last part of your profile url, e.g. https://plus.google.com/u/0/user_id

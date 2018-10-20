@@ -1,0 +1,58 @@
+---
+title：网站图标和导航栏图片修改
+tags：img,ico
+---
+
+Logo 图标修改
+============
+
+<https://tianqi.name/jekyll-TeXt-theme/docs/zh/logo-and-favicon>
+
+TeXt 模板文档中有详细说明。
+
+这里主要补充说明一下，需要注意的地方
+
+第一在 <https://realfavicongenerator.net/> 中生成相关图片文件后，下载可能会失败，这时候有迅雷会员的就用起来，否则下载可能会很费劲。
+
+我个人是用的玩客云，最后才下载成功的。
+
+第二是在 下载生成的 favicon 包，解压文件到你方才填写的路径，
+
+将 HTML 代码替换到 _includes/head.html 文件 <!-- begin favicon --> 和 <!-- end favicon --> 之间的地方。
+
+注意这里需要对代码中的图片资源路径做一下修改，如果你将下载的资源放到了assets文件夹中，就要对应的修改资源路径例如
+
+<!-- begin favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- end favicon -->
+
+
+
+导航栏图片修改
+============
+
+这个官方文档中没有单独在去说，其实在Logo图标修改的生成文件中就已经有了导航栏图片修改需要的svg图片文件资源了。
+
+从 `_includes/header.html`  文件中我们可以看到导航栏图片资源的地址。
+
+        <div class="header__brand">
+          {%- include svg/logo.svg -%}
+          {%- assign _paths_root = site.paths.root | default: site.data.variables.default.paths.root  -%}
+          {%- include snippets/get-nav-url.html path=_paths_root -%}
+          {%- if site.title -%}
+            <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ __return }}">{{ site.title }}</a>
+          {%- endif -%}
+        </div>
+       
+`svg/logo.svg`
+
+我们将下载后的图片资源文件中的safari-pinned-tab.svg 文件修改名字覆盖logo.svg文件。
+
+
+

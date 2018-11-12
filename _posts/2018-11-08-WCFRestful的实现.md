@@ -1,6 +1,7 @@
 ---
 title: WCF Restful 的实现
 tags: WCF
+key: 20181108
 ---
 
 首先这里提供一个微软官方示例下载的地址

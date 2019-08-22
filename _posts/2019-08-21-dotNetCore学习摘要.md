@@ -1,10 +1,10 @@
 ---
-title: 文章标题
-tags: TeXt
-key: 20181112
+title: dotNetCore学习摘要
+tags: WebAPI  C#  dotNetCore
+key: 20190821
 ---
 
-内容标题
+dotNetCore学习摘要
 ===============
 
 Price 属性会强制执行最小值和最大值

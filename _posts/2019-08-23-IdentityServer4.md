@@ -16,8 +16,8 @@ IdentityServer4
 3、创建Config.cs 类 编写 IdentityServer 方法
 
 4、定义API资源 API是您要保护的系统中的资源
-
-		/// <summary>
+{% highlight ruby linenos %}
+	/// <summary>
         /// 定义API资源 API是您要保护的系统中的资源
         /// </summary>
         /// <returns></returns>
@@ -28,10 +28,10 @@ IdentityServer4
                 new ApiResource("api1", "My API")
             };
         }
-		
+{% endhighlight ruby %}
 5、定义客户端 
-
-		/// <summary>
+{% highlight ruby linenos %}
+	/// <summary>
         /// 定义客户端
         /// </summary>
         /// <returns></returns>
@@ -58,14 +58,15 @@ IdentityServer4
             };
         }
 		
+{% endhighlight ruby %}
 	ClientId 客户端ID
 	AllowedGrantTypes 运行授权类型
 	ClientSecrets 客户端密码（同时指定了加密方式）
 	AllowedScopes 授权访问，对于API资源中定义的资源
 	
 6、内存中的标识资源
-
-		/// <summary>
+{% highlight ruby linenos %}
+	/// <summary>
         /// 内存中的标识资源
         /// </summary>
         /// <returns></returns>
@@ -73,11 +74,11 @@ IdentityServer4
         {
             return new List<IdentityResource>();
         }
-	
+{% endhighlight ruby %}
 7、配置IdentityServer
 
 加载资源和客户端定义发生在Startup.cs中
-
+{% highlight ruby linenos %}
 	public void ConfigureServices(IServiceCollection services)
 	{
 		var builder = services.AddIdentityServer()
@@ -88,10 +89,10 @@ IdentityServer4
 
 		// omitted for brevity
 	}
-	
+{% endhighlight ruby %}
 8、将IdentityServer添加到管道中  app.UseIdentityServer();
-
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{% highlight ruby linenos %}
+	public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -100,13 +101,13 @@ IdentityServer4
             app.UseIdentityServer();
             app.UseMvc();
         }
-		
+{% endhighlight ruby %}	
 完成以上配置后访问 http://localhost:50242/.well-known/openid-configuration
 可获得以下内容
 您应该会看到所谓的发现文档。发现文档是身份服务器中的标准端点。客户端和API将使用发现文档来下载必要的配置数据。
+{% highlight ruby linenos %}
 
-
-	{
+{
     "issuer": "http://localhost:50242",
     "authorization_endpoint": "http://localhost:50242/connect/authorize",
     "token_endpoint": "http://localhost:50242/connect/token",
@@ -163,19 +164,22 @@ IdentityServer4
     "request_parameter_supported": true
 }
 
+{% endhighlight ruby %}
 
 第二步， 创建业务API项目
+------
 1、创建一个 ASP.NET Core WEB API 项目
 	选择不使用HTTPS
 2、创建控制器 
 这里我们创建一个名字是IdentityController的控制器
 添加一个 Get 方法
-
-		[HttpGet]
+{% highlight ruby linenos %}
+	[HttpGet]
         public IActionResult Get()
         {
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
+{% endhighlight ruby %}
 在控制器类中上添加 [Authorize] 类注释，开启授权
 
 3、配置
@@ -184,7 +188,7 @@ IdentityServer4
 验证传入令牌以确保它来自受信任的颁发者
 验证令牌是否有效用于此API（也称为观众）
 将Startup更新为如下所示：
-
+{% highlight ruby linenos %}
 	public class Startup
 	{
 		public void ConfigureServices(IServiceCollection services)
@@ -211,7 +215,7 @@ IdentityServer4
 		}
 	}
 
-
+{% endhighlight ruby %}
 AddAuthentication将身份验证服务添加到DI并配置"Bearer"为默认方案。
  UseAuthentication将身份验证中间件添加到管道中，以便在每次调用主机时自动执行身份验证。
 
@@ -219,3 +223,4 @@ http://localhost:5001/identity在浏览器上导航到控制器应返回401状�
 这意味着您的API需要凭证，现在受IdentityServer保护
 
 第三步，客户端调用
+------

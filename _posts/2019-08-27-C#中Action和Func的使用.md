@@ -4,7 +4,7 @@ tags:委托 delegate Action Func lambda
 key: 20190827
 ---
 
-内容标题
+委托 delegate
 ===============
 委托 delegate
 ------

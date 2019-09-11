@@ -9,8 +9,9 @@ key: page-about
 ---
 
 欢迎来到羽毛的博客网站，我希望在这里记录下自己技术成长的点点滴滴。
-
+---------------------------------------------------------
 以下内容是TeXt 模板的内容，我将继续保留。
+-------------------------------------
 
 ![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)
 
